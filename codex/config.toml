@@ -1,0 +1,14 @@
+# Portable Codex preferences. Do not add project paths, authentication, or hook state here.
+model = "gpt-5.6-terra"
+model_reasoning_effort = "low"
+personality = "pragmatic"
+approvals_reviewer = "user"
+
+[tui]
+theme = "monokai-extended-bright"
+
+[plugins."vercel@openai-curated"]
+enabled = true
+
+[plugins."neon-postgres@plugins-cli"]
+enabled = true

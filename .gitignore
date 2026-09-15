@@ -1,0 +1,26 @@
+# macOS and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Credentials and machine-local overrides
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+settings.local.json
+config.local.json
+
+# Generated state and caches
+cache/
+logs/
+tmp/
+*.log
