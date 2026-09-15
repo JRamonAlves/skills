@@ -22,7 +22,24 @@ cd ~/.agents
 ./scripts/install.sh
 ```
 
-The install script creates Codex and OpenCode configuration directories when needed. It copies a template only when the target file does not already exist. It also links OpenCode's global `AGENTS.md` to this repository. OpenCode discovers `~/.agents/skills` automatically.
+### What the installer sets up
+
+- Codex discovers the shared skills in `~/.agents/skills` and receives portable preferences from `codex/config.toml`.
+- OpenCode discovers the shared skills in `~/.agents/skills` and receives its global `AGENTS.md` through a link to this repository.
+- OpenCode receives a portable local Ollama provider configuration at `http://localhost:11434`.
+- Codex and OpenCode configuration directories are created when needed.
+
+The script copies a configuration template only when the target file does not already exist. It preserves an existing `~/.codex/config.toml`, `~/.config/opencode/config.json`, or `~/.config/opencode/opencode.json`.
+
+### Finish the setup
+
+Install and authenticate both applications on the new computer. Then install the bundled Codex plugin:
+
+```sh
+codex plugin add neon-postgres@plugins-cli
+```
+
+Install and start Ollama if you want to use the bundled local provider. Start a new Codex or OpenCode session after setup so it reloads the skills and configuration.
 
 It never copies authentication, local project trust settings, history, or machine-specific hooks.
 
