@@ -11,6 +11,7 @@ This repository is the portable source of truth for my agent workflow. It works 
 - `codex/config.toml` contains portable Codex preferences.
 - `opencode/` contains portable OpenCode settings, including the local Ollama provider.
 - `.skill-lock.json` records installed skill sources and versions.
+- `THIRD_PARTY_NOTICES.md` records licenses for bundled third-party content.
 
 ## Set up a computer
 
