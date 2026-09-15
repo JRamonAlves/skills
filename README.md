@@ -9,6 +9,7 @@ This repository is the portable source of truth for my agent workflow. It works 
 - `plugins/neon-postgres/` contains the Neon plugin used by the marketplace.
 - `plugins/marketplace.json` references the bundled plugin by a relative path.
 - `codex/config.toml` contains portable Codex preferences.
+- `opencode/` contains portable OpenCode settings, including the local Ollama provider.
 - `.skill-lock.json` records installed skill sources and versions.
 
 ## Set up a computer
@@ -21,7 +22,9 @@ cd ~/.agents
 ./scripts/install.sh
 ```
 
-The install script creates `~/.codex` when needed, copies portable preferences only when no Codex configuration exists, and prints the one-time plugin install command. It never copies authentication or local project trust settings.
+The install script creates Codex and OpenCode configuration directories when needed. It copies a template only when the target file does not already exist. It also links OpenCode's global `AGENTS.md` to this repository. OpenCode discovers `~/.agents/skills` automatically.
+
+It never copies authentication, local project trust settings, history, or machine-specific hooks.
 
 ## Sync changes
 
