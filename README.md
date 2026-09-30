@@ -7,9 +7,11 @@ This repository is the portable source of truth for my agent workflow. It works 
 - `AGENTS.md` contains the shared instructions for agents.
 - `skills/` contains installed skills and their supporting files.
 - `plugins/neon-postgres/` contains the Neon plugin used by the marketplace.
-- `plugins/marketplace.json` references the bundled plugin by a relative path.
+- `plugins/marketplace.json` references the bundled plugin by a relative path for Codex.
+- `.claude-plugin/marketplace.json` references the same plugin for Claude Code.
 - `codex/config.toml` contains portable Codex preferences.
 - `opencode/` contains portable OpenCode settings, including the local Ollama provider.
+- `claude/settings.json` contains portable Claude Code preferences.
 - `.skill-lock.json` records installed skill sources and versions.
 - `THIRD_PARTY_NOTICES.md` records licenses for bundled third-party content.
 
@@ -28,19 +30,24 @@ cd ~/.agents
 - Codex discovers the shared skills in `~/.agents/skills` and receives portable preferences from `codex/config.toml`.
 - OpenCode discovers the shared skills in `~/.agents/skills` and receives its global `AGENTS.md` through a link to this repository.
 - OpenCode receives a portable local Ollama provider configuration at `http://localhost:11434`.
-- Codex and OpenCode configuration directories are created when needed.
+- Claude Code receives its global `CLAUDE.md` through a link to `AGENTS.md`.
+- Claude Code discovers each shared skill through a link in `~/.claude/skills`. The installer removes links to skills deleted from this repository.
+- Claude Code receives portable preferences from `claude/settings.json`.
+- Codex, OpenCode, and Claude Code configuration directories are created when needed.
 
-The script copies a configuration template only when the target file does not already exist. It preserves an existing `~/.codex/config.toml`, `~/.config/opencode/config.json`, or `~/.config/opencode/opencode.json`.
+The script copies a configuration template only when the target file does not already exist. It preserves an existing `~/.codex/config.toml`, `~/.config/opencode/config.json`, `~/.config/opencode/opencode.json`, `~/.claude/settings.json`, `~/.claude/CLAUDE.md`, or skill in `~/.claude/skills`.
 
 ### Finish the setup
 
-Install and authenticate both applications on the new computer. Then install the bundled Codex plugin:
+Install and authenticate the applications on the new computer. Then install the bundled plugin in Codex and Claude Code:
 
 ```sh
 codex plugin add neon-postgres@plugins-cli
+claude plugin marketplace add ~/.agents
+claude plugin install neon@plugins-cli
 ```
 
-Install and start Ollama if you want to use the bundled local provider. Start a new Codex or OpenCode session after setup so it reloads the skills and configuration.
+Install and start Ollama if you want to use the bundled local provider. Start a new Codex, OpenCode, or Claude Code session after setup so it reloads the skills and configuration.
 
 It never copies authentication, local project trust settings, history, or machine-specific hooks.
 
