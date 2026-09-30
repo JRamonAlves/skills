@@ -9,6 +9,3 @@ theme = "monokai-extended-bright"
 
 [plugins."vercel@openai-curated"]
 enabled = true
-
-[plugins."neon-postgres@plugins-cli"]
-enabled = true

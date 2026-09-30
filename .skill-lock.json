@@ -277,33 +277,6 @@
       "skillFolderHash": "6161508c5c7959b156ff0e4e10b510863b51f9cc",
       "installedAt": "2026-08-25T14:42:40.882Z",
       "updatedAt": "2026-08-25T14:42:40.882Z"
-    },
-    "computer-use": {
-      "source": "stablyai/orca",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/stablyai/orca.git",
-      "skillPath": "skills/computer-use/SKILL.md",
-      "skillFolderHash": "f0561c41d1f709a953684aef5d5368f8c58d269f",
-      "installedAt": "2026-08-30T21:35:33.348Z",
-      "updatedAt": "2026-09-03T22:20:23.326Z"
-    },
-    "orca-cli": {
-      "source": "stablyai/orca",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/stablyai/orca.git",
-      "skillPath": "skills/orca-cli/SKILL.md",
-      "skillFolderHash": "ee3a35c76f875ea6ebaf68947af13ba6346b13f2",
-      "installedAt": "2026-08-30T21:35:33.354Z",
-      "updatedAt": "2026-08-30T21:35:33.354Z"
-    },
-    "orchestration": {
-      "source": "stablyai/orca",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/stablyai/orca.git",
-      "skillPath": "skills/orchestration/SKILL.md",
-      "skillFolderHash": "4199ec6988801dd491631706cba62631b4bed8fb",
-      "installedAt": "2026-08-30T21:35:33.354Z",
-      "updatedAt": "2026-09-03T22:20:38.265Z"
     }
   },
   "dismissed": {

@@ -15,9 +15,6 @@ else
   printf '%s\n' "Merge preferences from $repo_dir/codex/config.toml if needed."
 fi
 
-printf '%s\n' 'Install or refresh the bundled plugin with:'
-printf '%s\n' '  codex plugin add neon-postgres@plugins-cli'
-
 if [ ! -f "$opencode_dir/config.json" ]; then
   mkdir -p "$opencode_dir"
   cp "$repo_dir/opencode/config.json" "$opencode_dir/config.json"
@@ -58,22 +55,7 @@ else
   printf '%s\n' "Kept existing Claude Code instructions at $claude_dir/CLAUDE.md"
 fi
 
-# Claude Code only discovers skills in its own directory, so link each one.
-mkdir -p "$claude_dir/skills"
-for skill in "$claude_dir"/skills/*; do
-  if [ -L "$skill" ] && [ ! -e "$skill" ]; then
-    case $(readlink "$skill") in
-      "$repo_dir"/skills/*)
-        rm "$skill"
-        printf '%s\n' "Removed stale Claude Code skill link $skill"
-        ;;
-    esac
-  fi
-done
-for skill in "$repo_dir"/skills/*/; do
-  name=$(basename "$skill")
-  if [ ! -e "$claude_dir/skills/$name" ]; then
-    ln -s "$repo_dir/skills/$name" "$claude_dir/skills/$name"
-    printf '%s\n' "Linked Claude Code skill $name"
-  fi
-done
+"$repo_dir/scripts/link-claude-skills.sh"
+
+git -C "$repo_dir" config core.hooksPath .githooks
+printf '%s\n' 'Enabled Git hooks that relink Claude Code skills after every pull'
