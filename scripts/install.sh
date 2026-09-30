@@ -77,7 +77,3 @@ for skill in "$repo_dir"/skills/*/; do
     printf '%s\n' "Linked Claude Code skill $name"
   fi
 done
-
-printf '%s\n' 'Install or refresh the bundled Claude Code plugin with:'
-printf '%s\n' "  claude plugin marketplace add $repo_dir"
-printf '%s\n' '  claude plugin install neon@plugins-cli'
