@@ -35,6 +35,7 @@ When working in a Git repository:
 - Review Git state before committing.
 - Commit project work when it forms a reasonable commit and the environment permits it.
 - Otherwise, suggest a commit message.
+- Use always conventional commits messages.
 - Create a branch only when requested.
 
 ## Validation
