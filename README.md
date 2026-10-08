@@ -18,7 +18,7 @@ This repository is the portable source of truth for my agent workflow. It works 
 Clone this repository into `~/.agents` on either macOS or Linux.
 
 ```sh
-git clone https://github.com/JRamonAlves/dotagents.git ~/.agents
+git clone https://github.com/JRamonAlves/skills.git ~/.agents
 cd ~/.agents
 ./scripts/install.sh
 ```
