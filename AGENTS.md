@@ -38,6 +38,11 @@ When working in a Git repository:
 - Use always conventional commits messages.
 - Create a branch only when requested.
 
+## Pull requests
+
+- After opening a pull request, report its URL and stop. Wait for the user's next command.
+- Leave CI to the user. Check or fix it only when asked.
+
 ## Validation
 
 - Run focused checks for changed code when practical.
