@@ -2,6 +2,18 @@
 
 This repository is the portable source of truth for my agent workflow. It works on macOS and Linux without hard-coded usernames or cache paths.
 
+## Problem
+
+Setting up another computer requires the same agent instructions, skills, and preferences. This repository keeps those files together and links the skills into Claude Code, whose discovery directory differs from the shared directory used by Codex and OpenCode.
+
+## Stack and architecture
+
+POSIX shell scripts install JSON and TOML configuration templates and create symbolic links. Git hooks refresh the Claude Code links after merges and rebases. The repository stores configuration and instructions; the coding agents run separately.
+
+## Project work and attribution
+
+The repository combines agent preferences, shared instructions, an installer, and skill synchronization hooks. The bundled skills come from Matt Pocock and Vercel, with source versions in `.skill-lock.json` and licenses in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Bundling or adapting these skills does not imply authorship of their upstream content.
+
 ## Contents
 
 - `AGENTS.md` contains the shared instructions for agents.
@@ -67,6 +79,25 @@ git add -A
 git commit -m "chore: update agent workflow"
 git push
 ```
+
+## Test
+
+Run the checks without installing agents or changing their configuration:
+
+```sh
+sh scripts/test.sh
+```
+
+The tests use a temporary fixture to check initial linking, repeated runs, newly added skills, removal of stale repository links, preservation of local and unrelated links, and paths containing spaces. They also check shell syntax for the scripts and hooks. They do not run the full installer or verify discovery inside the agent applications.
+
+## Decisions and limitations
+
+- Symbolic links keep skills synchronized without copying them on every update.
+- Existing configuration files remain in place; preference changes require a manual merge.
+- `core.hooksPath` replaces the repository's previous hook-directory setting. Review existing hooks before installing.
+- Installed agent applications, authentication, and Ollama are separate setup steps.
+- Portable configuration can still refer to models, plugins, or providers unavailable on another account or computer.
+- The synchronization scripts target macOS and Linux. Windows support is not implemented.
 
 ## Publish
 
